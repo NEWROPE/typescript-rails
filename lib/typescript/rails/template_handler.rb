@@ -6,8 +6,8 @@ class Typescript::Rails::TemplateHandler
       @erb_handler ||= ActionView::Template.registered_template_handler(:erb)
     end
 
-    def call(template)
-      compiled_source = erb_handler.call(template)
+    def call(template, source)
+      compiled_source = erb_handler.call(template, source)
       path = template.identifier.gsub(/['\\]/, '\\\\\&') # "'" => "\\'", '\\' => '\\\\'
       <<-EOS
         ::Typescript::Rails::Compiler.compile('#{path}', (begin;#{compiled_source};end))
