@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
-  gem 'rails', '~> 4.0'
+  gem 'rails', '>= 4.0'
   gem 'sprockets-rails', '> 2.0'
   gem 'minitest-power_assert'
   gem 'coveralls'
