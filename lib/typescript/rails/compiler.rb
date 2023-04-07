@@ -2,10 +2,10 @@ require 'typescript/rails'
 require 'typescript-node'
 
 module Typescript::Rails::Compiler
-  class << self
-    # @!scope class
-    cattr_accessor :default_options
+  # @!scope class
+  self.cattr_accessor(:default_options)
 
+  class << self
     # Replace relative paths specified in /// <reference path="..." /> with absolute paths.
     #
     # @param [String] ts_path Source .ts path
