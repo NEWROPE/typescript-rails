@@ -35,12 +35,13 @@ class AssetsTest < ActiveSupport::TestCase
     @app.assets
   end
 
-  test 'typescript.js is included in Sprockets environment' do
+  # Run all tests in one block to avoid error from calling @app.initialize! multiple times
+  test 'generates assets successfully' do
+    # typescript.js is included in Sprockets environment
     assert { assets['typescript'].filename.to_s.end_with?('/lib/assets/javascripts/typescript.js.erb') }
     assert { assets['typescript'].source.include?('var ts;') }
-  end
 
-  test 'assets .js.ts is compiled from TypeScript to JavaScript' do
+    # 'assets .js.ts is compiled from TypeScript to JavaScript'
     assert { assets['javascripts/hello.js'].present? }
     assert { assets['javascripts/hello.js'].source.include?('var log_to_console = function (x) {') }
     assert { assets['javascripts/hello.js'].source.include?('var s = "Hello, world!";') }
