@@ -36,8 +36,8 @@ class AssetsTest < ActiveSupport::TestCase
   end
 
   test 'typescript.js is included in Sprockets environment' do
-    assert { assets["typescript"].filename.to_s.end_with?('/lib/assets/javascripts/typescript.js.erb') }
-    assert { assets["typescript"].source.include?('var ts;') }
+    assert { assets['typescript'].filename.to_s.end_with?('/lib/assets/javascripts/typescript.js.erb') }
+    assert { assets['typescript'].source.include?('var ts;') }
   end
 
   test 'assets .js.ts is compiled from TypeScript to JavaScript' do
